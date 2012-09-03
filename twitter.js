@@ -4,6 +4,7 @@ var https = require('https'),
 	util = require('util'),
 	url = require('url');
 var irc = require('irc');
+var config = require('./config.js');
 
 var trackstring = "track=netz39";
 

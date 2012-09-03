@@ -2,9 +2,9 @@
 Posting Tweets for Netz39 to our irc-Channel on freenode
 
 ##Usage
-<pre> <code> node twitter.js username password </code> </pre>
-
-// username and password is required by the twitter Streaming API
+Edit config.sample.js and save it as config.js
+Then simply:
+<pre> <code> node twitter.js </code> </pre>
 
 ##ToDo
 * Adding OAuth
