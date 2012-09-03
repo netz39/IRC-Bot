@@ -12,7 +12,7 @@ var options = {
 	host : 'stream.twitter.com',
 	port : 443,
 	path : '/1/statuses/filter.json',
-	auth : process.argv[2] + ":" + process.argv[3],
+	auth : config.twitter.username + ":" + config.twitter.password,
 	headers : {
 		'Content-Type' : 'application/x-www-form-urlencoded'
 	},
