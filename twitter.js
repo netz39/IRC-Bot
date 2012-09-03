@@ -27,7 +27,6 @@ bot.on('error', function(err) {
 });
 
 bot.join("#netz39");
-
 var req = https.request(options, function(res) {
 
 	util.puts("Opening Stream with StatusCode: ", res.statusCode);
@@ -38,7 +37,7 @@ var req = https.request(options, function(res) {
 			if(/^\{/.test(dat)) {
 				var tweet = JSON.parse(dat);
 				if(tweet.user) {
-					bot.say("#netz39",tweet.user.screen_name + ': ' + tweet.text);
+					bot.say("#netz39","\u0002" + tweet.user.screen_name + '\u000F: ' + tweet.text);
 				}
 			}
 		} catch (err) {
