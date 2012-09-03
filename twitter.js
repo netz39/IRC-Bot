@@ -37,7 +37,7 @@ var req = https.request(options, function(res) {
 			if(/^\{/.test(dat)) {
 				var tweet = JSON.parse(dat);
 				if(tweet.user) {
-					bot.say("#netz39","\u0002" + tweet.user.screen_name + '\u000F: ' + tweet.text);
+					bot.say("#netz39",tweet.user.screen_name + ': ' + tweet.text);
 				}
 			}
 		} catch (err) {
