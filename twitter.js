@@ -38,7 +38,7 @@ var req = https.request(options, function(res) {
 			if(/^\{/.test(dat)) {
 				var tweet = JSON.parse(dat);
 				if(tweet.user) {
-					bot.say( "#netz39", irc.colors.wrap( 'green', tweet.user.screen_name + ': ', 'reset' ) + tweet.text );
+					bot.say( "#netz39", '\u002' + irc.colors.wrap( 'dark_green', tweet.user.screen_name + ': ', 'reset' ) + tweet.text );
 				}
 			}
 		} catch (err) {
