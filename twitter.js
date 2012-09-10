@@ -1,12 +1,10 @@
-/* Restreaming Data from the Twitter-Streaming API */
-
 var https = require('https'),
 	util = require('util'),
 	url = require('url');
 var irc = require('irc');
 var config = require('./config.js');
 
-var trackstring = "track=netz39";
+var trackstring = "track=netz39&follow=86615241";
 
 var options = {
 	host : 'stream.twitter.com',
@@ -39,6 +37,7 @@ var req = https.request(options, function(res) {
 				var tweet = JSON.parse(dat);
 				if(tweet.user) {
 					bot.say( "#netz39", '\u0002' + irc.colors.wrap( 'dark_green', tweet.user.screen_name + ': ', 'reset' ) + tweet.text );
+					//util.puts(tweet.user.screen_name + tweet.text);
 				}
 			}
 		} catch (err) {
