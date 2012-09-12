@@ -44,7 +44,8 @@ var req = https.request(options, function(res) {
 						//util.puts(tweet.user.screen_name + tweet.text);
 					}
 					else {
-						util.puts(tweet.user.screen_name + ': ' +tweet.text);
+						util.puts(tweet.user.screen_name + ': ' + tweet.text);
+						util.puts(JSON.stringify(tweet));
 					}
 				}
 			}
