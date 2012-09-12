@@ -5,6 +5,7 @@ var irc = require('irc');
 var config = require('./config.js');
 
 var trackstring = "track=netz39&follow=86615241";
+var debug = false;
 
 var options = {
 	host : 'stream.twitter.com',
@@ -16,16 +17,18 @@ var options = {
 	},
 	method : 'POST',
 }
+if(!debug) {
+	var bot = new irc.Client('irc.freenode.net', 'netz39twitter', {
+		channels: ['#netz39']
+	});
 
-var bot = new irc.Client('irc.freenode.net', 'netz39twitter', {
-	channels: ['#netz39']
-});
+	bot.on('error', function(err) {
+		util.puts(JSON.stringify(err));
+	});
 
-bot.on('error', function(err) {
-	util.puts(JSON.stringify(err));
-});
+	bot.join("#netz39");
+}
 
-bot.join("#netz39");
 var req = https.request(options, function(res) {
 
 	util.puts("Opening Stream with StatusCode: ", res.statusCode);
@@ -36,8 +39,13 @@ var req = https.request(options, function(res) {
 			if(/^\{/.test(dat)) {
 				var tweet = JSON.parse(dat);
 				if(tweet.user) {
-					bot.say( "#netz39", '\u0002' + irc.colors.wrap( 'dark_green', tweet.user.screen_name + ': ', 'reset' ) + tweet.text );
-					//util.puts(tweet.user.screen_name + tweet.text);
+					if(!debug) {
+						bot.say( "#netz39", '\u0002' + irc.colors.wrap( 'dark_green', tweet.user.screen_name + ': ', 'reset' ) + tweet.text );
+						//util.puts(tweet.user.screen_name + tweet.text);
+					}
+					else {
+						util.puts(tweet.user.screen_name + ': ' +tweet.text);
+					}
 				}
 			}
 		} catch (err) {
