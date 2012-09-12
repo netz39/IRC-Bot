@@ -5,7 +5,7 @@ var irc = require('irc');
 var config = require('./config.js');
 
 var trackstring = "track=netz39&follow=86615241";
-var debug = false;
+var debug = config.debug;
 
 var options = {
 	host : 'stream.twitter.com',
