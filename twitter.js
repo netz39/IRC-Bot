@@ -54,7 +54,10 @@ var req = https.request(options, function(res) {
 			util.puts(dat);
 		}
 	});
-
+	
+	res.on('end', function() {
+		util.puts('Request ended');
+	});
 });
 
 req.write(trackstring);
