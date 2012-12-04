@@ -28,6 +28,7 @@ if(!debug) {
 
 	bot.join("#netz39");
 }
+
 function doRequest() {
 	var req = https.request(options, function(res) {
 
@@ -68,3 +69,5 @@ function doRequest() {
 		util.puts(e);
 	});
 }
+
+doRequest();
