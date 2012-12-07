@@ -44,8 +44,7 @@ function doRequest() {
 							bot.say( "#netz39", '\u0002' + irc.colors.wrap( 'dark_green', tweet.user.screen_name + ': ', 'reset' ) + tweet.text );
 							//util.puts(tweet.user.screen_name + tweet.text);
 						}
-						util.puts(tweet.user.screen_name + ': ' + tweet.text);
-						util.puts(JSON.stringify(tweet));
+						util.puts(tweet.user.screen_name + ' ' + new Date() + '\n' + tweet.text);
 					}
 				}
 			} catch (err) {
